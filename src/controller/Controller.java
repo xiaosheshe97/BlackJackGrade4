@@ -20,7 +20,7 @@ public class Controller {
     @FXML
     void PlayGame(ActionEvent event) throws IOException {
         Parent playGameView = FXMLLoader.load(getClass().getResource("../view/PlayNewGame.fxml"));
-        
+
         Scene playScene = new Scene(playGameView);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(playScene);
