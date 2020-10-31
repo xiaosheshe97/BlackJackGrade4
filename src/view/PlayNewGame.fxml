@@ -16,17 +16,17 @@
             <Font name="System Italic" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="PlayNewGame" layoutX="664.0" layoutY="27.0" mnemonicParsing="false" onAction="#PlayGame" style="-fx-background-color: #8b0000;" text="Play New Game" textFill="WHITE">
+      <Button fx:id="PlayNewGame" layoutX="664.0" layoutY="27.0" mnemonicParsing="false" onAction="#PlayNewGame" style="-fx-background-color: #8b0000;" text="Play New Game" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="Hit" layoutX="664.0" layoutY="451.0" mnemonicParsing="false" onAction="#PlayGame" style="-fx-background-color: #4169e1;" text="Hit" textFill="WHITE">
+      <Button fx:id="Hit" layoutX="664.0" layoutY="451.0" mnemonicParsing="false" onAction="#Hit" style="-fx-background-color: #4169e1;" text="Hit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="Stand" layoutX="721.0" layoutY="451.0" mnemonicParsing="false" style="-fx-background-color: #4169e1;" text="Stand" textFill="#fdfdfd">
+      <Button fx:id="Stand" layoutX="721.0" layoutY="451.0" mnemonicParsing="false" onAction="#Stand" style="-fx-background-color: #4169e1;" text="Stand" textFill="#fdfdfd">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -34,17 +34,17 @@
       <ImageView fx:id="Deck" fitHeight="129.0" fitWidth="98.0" layoutX="668.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="DealerCard1" fitHeight="76.0" fitWidth="41.0" layoutX="180.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="DealerCard2" fitHeight="76.0" fitWidth="41.0" layoutX="235.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="DealerCard3" fitHeight="76.0" fitWidth="41.0" layoutX="291.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="DealerCard4" fitHeight="76.0" fitWidth="41.0" layoutX="347.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="DealerCard5" fitHeight="76.0" fitWidth="41.0" layoutX="400.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="DealerCard6" fitHeight="76.0" fitWidth="41.0" layoutX="452.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard1" fitHeight="76.0" fitWidth="41.0" layoutX="180.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard2" fitHeight="76.0" fitWidth="41.0" layoutX="235.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="DealerScore" layoutX="106.0" layoutY="141.0" prefHeight="26.0" prefWidth="41.0" />
-      <TextField fx:id="PlayerScore" layoutX="106.0" layoutY="304.0" prefHeight="26.0" prefWidth="41.0" />
-      <ImageView fx:id="DealerCard3" fitHeight="76.0" fitWidth="41.0" layoutX="291.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard3" fitHeight="76.0" fitWidth="41.0" layoutX="291.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard4" fitHeight="76.0" fitWidth="41.0" layoutX="347.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard4" fitHeight="76.0" fitWidth="41.0" layoutX="347.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard5" fitHeight="76.0" fitWidth="41.0" layoutX="400.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard5" fitHeight="76.0" fitWidth="41.0" layoutX="400.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard6" fitHeight="76.0" fitWidth="41.0" layoutX="452.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard6" fitHeight="76.0" fitWidth="41.0" layoutX="452.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="DealerScore" layoutX="106.0" layoutY="141.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField fx:id="PlayerScore" layoutX="106.0" layoutY="304.0" prefHeight="26.0" prefWidth="41.0" />
    </children>
 </AnchorPane>
