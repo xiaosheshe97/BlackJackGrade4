@@ -14,7 +14,7 @@ public class Soft17RuleStrategy implements IHitStrategy {
                return true;
            }
        }
-           return a_dealer.CalcScore() <17;
+           return a_dealer.CalcScore() < 17;
     }
 
     private boolean isSoft17(Player a_dealer){
