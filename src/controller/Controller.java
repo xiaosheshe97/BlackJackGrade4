@@ -92,27 +92,31 @@ public class Controller{
     @FXML
     void PlayNewGame(ActionEvent event) throws IOException {
 //        this.a_game.NewGame();
-        this.Deck.setImage(deckBack[0]);
+//        this.Deck.setImage(deckBack[0]);
+//
+//        Card card = new Card(Card.Color.Clubs, Card.Value.Two);
+//        card.Show(true);
+//        String cardType = card.GetValue() + "of" + card.GetColor();
+//        System.out.println(cardType);
+//        Card card2 = new Card(Card.Color.Diamonds, Card.Value.Two);
+//        card2.Show(true);
+//        String cardType2 = String.valueOf(card2.GetValue().ordinal()) + card2.GetColor().toString().charAt(0);
+////        DealerCard1.setImage(new Image("model/PNG/TwoofClubs.png"));
+//        System.out.println(cardType2);
+//
+//
+//
+//        DealerCard1.setImage(new Image("model/PNG/" + cardType + ".png"));
+//        DealerCard2.setImage(new Image("model/PNG/" + cardType2 + ".png"));
 
-        Card card = new Card(Card.Color.Clubs, Card.Value.Two);
-        card.Show(true);
-        String cardType = card.GetValue() + "of" + card.GetColor();
-        System.out.println(cardType);
-//        DealerCard1.setImage(new Image("model/PNG/TwoofClubs.png"));
-
-        DealerCard1.setImage(new Image("model/PNG/" + cardType + ".png"));
     }
 
     @FXML
     void Hit(ActionEvent event) throws IOException {
-        this.a_game.Hit();
-
     }
 
     @FXML
     void Stand(ActionEvent event) throws IOException {
-        this.a_game.Stand();
-
     }
 
 }
