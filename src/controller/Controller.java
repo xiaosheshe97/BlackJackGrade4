@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import model.Card;
 import model.Dealer;
 import model.Game;
@@ -14,6 +15,7 @@ import model.ICardObserver;
 import model.rules.BasicHitAmericanGameDealerWinFactory;
 import model.rules.IVisitor;
 import model.rules.RulesAbstractFactory;
+import model.rules.Soft17InternationalDealerFactory;
 import view.PrintVisitor;
 
 import java.io.IOException;
@@ -32,17 +34,6 @@ public class Controller implements Initializable, ICardObserver{
 
     private Image card;
 
-    @Override
-    public void updateNewCard(Card card) {
-        String cardScores[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-        assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
-        card.Show(true);
-        this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
-        System.out.println(this.cardType);
-        this.card = new Image("model/PNG/" + this.cardType + ".png");
-        Pause();
-    }
-
     @FXML
     private Button PlayNewGame;
 
@@ -53,10 +44,10 @@ public class Controller implements Initializable, ICardObserver{
     private Button Stand;
 
     @FXML
-    private TextField DealerScore;
+    private Text DealerScore;
 
     @FXML
-    private TextField PlayerScore;
+    private Text PlayerScore;
 
     @FXML
     private ImageView Deck;
@@ -97,41 +88,111 @@ public class Controller implements Initializable, ICardObserver{
     @FXML
     private ImageView PlayerCard6;
 
+    @FXML
+    private Text GameOver;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.factory = new BasicHitAmericanGameDealerWinFactory();
+        this.factory = new Soft17InternationalDealerFactory();
         this.iVisitor = new PrintVisitor();
         this.a_game = new Game(factory, iVisitor);
         this.a_game.SubscriptionToNewCards(this);
         DeckBack();
     }
 
+    @Override
+    public void updateNewCard(Card card) {
+    }
+
     @FXML
     void PlayNewGame() {
+        this.GameOver.setText(null);
+        this.PlayerCard1.setImage(null);
+        this.PlayerCard2.setImage(null);
+        this.PlayerCard3.setImage(null);
+        this.PlayerCard4.setImage(null);
+        this.PlayerCard5.setImage(null);
+        this.PlayerCard6.setImage(null);
+        this.DealerCard1.setImage(null);
+        this.DealerCard2.setImage(null);
+        this.DealerCard3.setImage(null);
+        this.DealerCard4.setImage(null);
+        this.DealerCard5.setImage(null);
+        this.DealerCard6.setImage(null);
+
         this.a_game.NewGame();
-        PlayerCard1.setImage(this.card);
+        showCard();
         DeckBack();
-        DealerCard1.setImage(this.card);
-        DeckBack();
-        PlayerCard2.setImage(new Image("model/PNG/" + this.cardType + ".png"));
-        DeckBack();
-        DealerCard2.setImage(new Image("model/PNG/" + this.cardType + ".png"));
 
         PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
         DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
+        gameOver();
     }
 
     @FXML
-    void Hit(ActionEvent event) throws IOException {
-        this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
-
+    void Hit() throws IOException {
+        this.a_game.Hit();
+        DeckBack();
+        showCard();
+        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
+        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
+        gameOver();
     }
 
     @FXML
-    void Stand(ActionEvent event) throws IOException {
-        this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
+    void Stand() throws IOException {
+        this.a_game.Stand();
+        DeckBack();
+        showCard();
+        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
+        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
+        gameOver();
+    }
 
+    private void DeckBack() {
+        this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
+    }
+
+    private void showCard() {
+        int i = 0;
+        int j = 0;
+        ImageView[] PlayerCards = {PlayerCard1, PlayerCard2, PlayerCard3, PlayerCard4 , PlayerCard5, PlayerCard6};
+        ImageView[] DealerCards = {DealerCard1, DealerCard2, DealerCard3, DealerCard4, DealerCard5, DealerCard6};
+
+        String cardScores[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
+
+        for (Card card : this.a_game.GetPlayerHand()) {
+            this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
+            this.card = new Image("model/PNG/" + this.cardType + ".png");
+            PlayerCards[i].setImage(this.card);
+            PlayerCards[i].setVisible(true);
+            i++;
+        }
+
+        for (Card card : this.a_game.GetDealerHand()) {
+            this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
+            this.card = new Image("model/PNG/" + this.cardType + ".png");
+            DealerCards[j].setImage(this.card);
+            DealerCards[j].setVisible(true);
+            j++;
+        }
+    }
+
+    private void gameOver() {
+        if (this.a_game.IsGameOver()) {
+            GameOver.setText(DisplayGameOver(this.a_game.IsDealerWinner()));
+        }
+    }
+
+    public String DisplayGameOver(boolean a_dealerIsWinner)
+    {
+        if (a_dealerIsWinner) {
+            return "Dealer Won!";
+        }
+        else {
+            return "You Won!";
+        }
     }
 
     public void Pause(){
@@ -141,7 +202,5 @@ public class Controller implements Initializable, ICardObserver{
         }catch (Exception e){}
     }
 
-    private void DeckBack() {
-        this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
-    }
+
 }
