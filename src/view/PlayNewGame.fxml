@@ -32,18 +32,18 @@
          </font>
       </Button>
       <ImageView fx:id="Deck" fitHeight="129.0" fitWidth="98.0" layoutX="668.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard1" fitHeight="76.0" fitWidth="50.0" layoutX="180.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard2" fitHeight="76.0" fitWidth="50.0" layoutX="235.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard3" fitHeight="76.0" fitWidth="50.0" layoutX="291.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard4" fitHeight="76.0" fitWidth="50.0" layoutX="347.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard5" fitHeight="76.0" fitWidth="50.0" layoutX="400.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="DealerCard6" fitHeight="76.0" fitWidth="50.0" layoutX="452.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard1" fitHeight="76.0" fitWidth="50.0" layoutX="180.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard2" fitHeight="76.0" fitWidth="50.0" layoutX="235.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard3" fitHeight="76.0" fitWidth="50.0" layoutX="291.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard4" fitHeight="76.0" fitWidth="50.0" layoutX="347.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard5" fitHeight="76.0" fitWidth="50.0" layoutX="400.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="PlayerCard6" fitHeight="76.0" fitWidth="50.0" layoutX="452.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="DealerCard1" fitHeight="90.0" fitWidth="70.0" layoutX="170.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="170.0" />
+      <ImageView fx:id="DealerCard2" fitHeight="90.0" fitWidth="70.0" layoutX="250.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="250.0" />
+      <ImageView fx:id="DealerCard3" fitHeight="90.0" fitWidth="70.0" layoutX="330.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="330.0" />
+      <ImageView fx:id="DealerCard4" fitHeight="90.0" fitWidth="70.0" layoutX="410.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="410.0" />
+      <ImageView fx:id="DealerCard5" fitHeight="90.0" fitWidth="70.0" layoutX="490.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="490.0" />
+      <ImageView fx:id="DealerCard6" fitHeight="90.0" fitWidth="70.0" layoutX="570.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" x="10.0" AnchorPane.leftAnchor="570.0" />
+      <ImageView fx:id="PlayerCard1" fitHeight="90.0" fitWidth="70.0" layoutX="170.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerCard2" fitHeight="90.0" fitWidth="70.0" layoutX="250.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerCard3" fitHeight="90.0" fitWidth="70.0" layoutX="330.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerCard4" fitHeight="90.0" fitWidth="70.0" layoutX="410.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerCard5" fitHeight="90.0" fitWidth="70.0" layoutX="490.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="PlayerCard6" fitHeight="90.0" fitWidth="70.0" layoutX="570.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="DealerScore" layoutX="106.0" layoutY="141.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="PlayerScore" layoutX="106.0" layoutY="304.0" prefHeight="26.0" prefWidth="41.0" />
    </children>
