@@ -1,10 +1,10 @@
 package model;
 
+
 import java.util.List;
 import java.util.LinkedList;
 
 public class Deck {
-
   private List<Card> m_cards;
   
   public Deck() {
