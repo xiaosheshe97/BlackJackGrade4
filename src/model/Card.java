@@ -1,5 +1,6 @@
 package model;
 
+
 public class Card {
 
   public enum Color {
@@ -28,7 +29,7 @@ public class Card {
     Count,
     Hidden
   }
-  
+
   private Color m_color;
   private Value m_value;
   private boolean m_isHidden;
