@@ -14,6 +14,5 @@ public interface IVisitor {
     void visit(Soft17RuleStrategy Soft17RuleStrategy);
     void visit(DealerWinStrategy DealerWinStrategy);
     void visit(PlayerWinStrategy PlayerWinStrategy);
-
 }
 
