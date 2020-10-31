@@ -100,11 +100,11 @@ public class Controller implements Initializable, ICardObserver{
         DeckBack();
     }
 
-    @Override
+   /* @Override
     public void updateNewCard(Card card) {
-    }
+    }*/
 
-    @FXML
+   /* @FXML
     void PlayNewGame() {
         this.GameOver.setText(null);
         this.PlayerCard1.setImage(null);
@@ -127,13 +127,69 @@ public class Controller implements Initializable, ICardObserver{
         PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
         DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
         gameOver();
+    }*/
+
+    @Override
+    public void updateNewCard(Card card) {
+        // String cardScores[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        // assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
+        // card.Show(true);
+        // this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
+        //System.out.println(this.cardType);
+       // this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
+         //System.out.println(this.card.getUrl());
+        // System.out.println(card.GetValue()+""+card.GetColor());
+        //Pause();
+    }
+
+    public void showPlayerHand() {
+        //a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+        //a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+        ImageView[] playerCards = {PlayerCard1,PlayerCard2,PlayerCard3,PlayerCard4,PlayerCard5,PlayerCard6};
+
+        ImageView[] dealerCards = {DealerCard1,DealerCard2,DealerCard3,DealerCard4,DealerCard5,DealerCard6};
+
+        int i = 0;
+        int j = 0;
+        for(Card card : a_game.GetDealerHand()){
+           // updateNewCard(card);
+            System.out.println(card.GetValue()+""+card.GetColor());
+            this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
+
+          /*  this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
+            System.out.println(card.GetValue()+""+card.GetColor());
+            System.out.println("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");*/
+            // Pause();
+            dealerCards[i++].setImage(this.card);
+            //Pause();
+        }
+        for(Card card : a_game.GetPlayerHand()){
+            //updateNewCard(card);
+            System.out.println(card.GetValue()+""+card.GetColor());
+            this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
+            // this.card = new Image("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");
+            playerCards[j++].setImage(this.card);
+            // Pause();
+        }
+
+
+    }
+
+    @FXML
+    void PlayNewGame() {
+        this.a_game.NewGame();
+        showPlayerHand();
+        //updateNewCard();
+
+        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
+        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
     }
 
     @FXML
     void Hit() throws IOException {
         this.a_game.Hit();
         DeckBack();
-        showCard();
+        showPlayerHand();
         PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
         DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
         gameOver();
@@ -143,7 +199,7 @@ public class Controller implements Initializable, ICardObserver{
     void Stand() throws IOException {
         this.a_game.Stand();
         DeckBack();
-        showCard();
+        showPlayerHand();
         PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
         DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
         gameOver();
@@ -153,7 +209,7 @@ public class Controller implements Initializable, ICardObserver{
         this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
     }
 
-    private void showCard() {
+   /* private void showCard() {
         int i = 0;
         int j = 0;
         ImageView[] PlayerCards = {PlayerCard1, PlayerCard2, PlayerCard3, PlayerCard4 , PlayerCard5, PlayerCard6};
@@ -177,7 +233,7 @@ public class Controller implements Initializable, ICardObserver{
             DealerCards[j].setVisible(true);
             j++;
         }
-    }
+    }*/
 
     private void gameOver() {
         if (this.a_game.IsGameOver()) {
