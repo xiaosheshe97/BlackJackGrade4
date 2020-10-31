@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<AnchorPane fx:id="BlackJack" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <Text layoutX="20.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Score:" wrappingWidth="80.63360595703125" />
       <Text layoutX="20.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Score:" />
