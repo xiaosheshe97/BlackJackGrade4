@@ -70,9 +70,9 @@ public class Dealer extends Player {
 //      return false;
 //    }
 //    return CalcScore() >= a_player.CalcScore();
-    int dealerScore = CalcScore();
-    int playerScore = a_player.CalcScore();
-    return m_winRule.isDealerWinner(dealerScore,playerScore,g_maxScore);
+    //int dealerScore = CalcScore();
+    //int playerScore = a_player.CalcScore();
+    return m_winRule.isDealerWinner(CalcScore(),a_player.CalcScore(),g_maxScore);
   }
 
   public boolean IsGameOver() {
