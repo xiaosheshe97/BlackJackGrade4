@@ -15,7 +15,7 @@ public class Game {
     m_player = new Player();
 
   }
-  public Game( RulesAbstractFactory factory,IVisitor iVisitor)
+  public Game(RulesAbstractFactory factory,IVisitor iVisitor)
   {
     m_dealer = new Dealer(factory,iVisitor);
     m_player = new Player();
@@ -23,7 +23,6 @@ public class Game {
   }
   public void SubscriptionToNewCards(ICardObserver subscriber)
   {
-
     m_player.Subscribe(subscriber);
     m_dealer.Subscribe(subscriber);
   }
@@ -40,7 +39,6 @@ public class Game {
   
   public boolean NewGame()
   {
-
     return m_dealer.NewGame(m_player);
   }
   
