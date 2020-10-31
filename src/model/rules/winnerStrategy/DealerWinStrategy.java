@@ -10,7 +10,7 @@ public class DealerWinStrategy implements IWinnerStrategy {
         } else if (dealerCore > maxScore) {
             return false;
         }
-        return dealerCore == playerScore;
+        return dealerCore >= playerScore;
     }
     @Override
     public void accept(IVisitor visitor) {
