@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -82,11 +83,18 @@ public class Controller implements Initializable, ICardObserver{
     @FXML
     private ImageView PlayerCard6;
 
-//    @FXML
-//    private ImageView gettingCard;
+    @FXML
+    private Label PlayerWin;
 
     @FXML
-    private Text GameOver;
+    private Label DealerWin;
+
+
+//    @FXML
+//    private ImageView gettingCard;
+//
+//    @FXML
+//    private Text GameOver;
 
 
     @Override
@@ -97,13 +105,14 @@ public class Controller implements Initializable, ICardObserver{
         this.a_game.SubscriptionToNewCards(this);
         Hit.setDisable(true);
         Stand.setDisable(true);
+        PlayerWin.setVisible(false);
+        DealerWin.setVisible(false);
         DeckBack();
     }
 
     @Override
     public void updateNewCard(Card card) {
-
-      //  Pause();
+        Pause();
     }
 
     public void showPlayerHand() {
@@ -137,9 +146,10 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void PlayNewGame() {
-       
 
-        GameOver.setText("");
+        PlayerWin.setVisible(false);
+        DealerWin.setVisible(false);
+       // GameOver.setText("");
         Hit.setDisable(false);
         Stand.setDisable(false);
         this.a_game.NewGame();
@@ -176,23 +186,34 @@ public class Controller implements Initializable, ICardObserver{
     private void gameOver() {
         if (this.a_game.IsGameOver()) {
             Stand.setDisable(true);
-            GameOver.setText(DisplayGameOver(this.a_game.IsDealerWinner()));
+            //GameOver.setText(DisplayGameOver(this.a_game.IsDealerWinner()));
+            DisplayGameOver(this.a_game.IsDealerWinner());
         }
     }
 
-    public String DisplayGameOver(boolean a_dealerIsWinner)
+    public void DisplayGameOver(boolean a_dealerIsWinner)
     {
         if (a_dealerIsWinner) {
-            return "Dealer Won!";
+            DealerWin.setVisible(true);
         }
         else {
-            return "You Won!";
+            PlayerWin.setVisible(true);
         }
     }
+
+//    public String DisplayGameOver(boolean a_dealerIsWinner)
+//    {
+//        if (a_dealerIsWinner) {
+//            return "Dealer Won!";
+//        }
+//        else {
+//            return "You Won!";
+//        }
+//    }
 
     public void Pause(){
         try{
-            Thread.sleep(2000);
+            Thread.sleep(200);
         }catch (Exception e){}
     }
 

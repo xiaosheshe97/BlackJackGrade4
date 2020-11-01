@@ -50,6 +50,7 @@
       <ImageView fx:id="PlayerCard5" fitHeight="90.0" fitWidth="70.0" layoutX="490.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="PlayerCard6" fitHeight="90.0" fitWidth="70.0" layoutX="570.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" />
       <Text fx:id="PlayerScore" layoutX="110.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="41.98307228088379" />
-      <Text fx:id="GameOver" layoutX="20.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="323.5830593109131" />
+      <Label fx:id="PlayerWin" layoutX="60.0" layoutY="434.0" text="You Won!" />
+      <Label fx:id="DealerWin" layoutX="60.0" layoutY="434.0" text="Dealer Won!" />
    </children>
 </AnchorPane>
