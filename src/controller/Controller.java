@@ -26,6 +26,7 @@ public class Controller implements Initializable, ICardObserver{
     private RulesAbstractFactory factory;
     private IVisitor iVisitor;
     private Game a_game;
+    private boolean newGamePressed;
 
     private Image[] deckBack = {new Image("model/PNG/blue_back.png"), new Image("model/PNG/gray_back.png"), new Image("model/PNG/green_back.png"),
             new Image("model/PNG/purple_back.png"), new Image("model/PNG/red_back.png"), new Image("model/PNG/yellow_back.png")};
@@ -142,6 +143,22 @@ public class Controller implements Initializable, ICardObserver{
         //Pause();
     }
 
+    public void makeImageViewInvisible(){
+        //this.GameOver.setText(null);
+        this.PlayerCard1.setVisible(false);
+        this.PlayerCard2.setVisible(false);
+        this.PlayerCard3.setVisible(false);
+        this.PlayerCard4.setVisible(false);
+        this.PlayerCard5.setVisible(false);
+        this.PlayerCard6.setVisible(false);
+        this.DealerCard1.setVisible(false);
+        this.DealerCard2.setVisible(false);
+        this.DealerCard3.setVisible(false);
+        this.DealerCard4.setVisible(false);
+        this.DealerCard5.setVisible(false);
+        this.DealerCard6.setVisible(false);
+    }
+
     public void showPlayerHand() {
         //a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
         //a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
@@ -160,6 +177,7 @@ public class Controller implements Initializable, ICardObserver{
             System.out.println(card.GetValue()+""+card.GetColor());
             System.out.println("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");*/
             // Pause();
+            dealerCards[i].setVisible(true);
             dealerCards[i++].setImage(this.card);
             //Pause();
         }
@@ -168,6 +186,7 @@ public class Controller implements Initializable, ICardObserver{
             System.out.println(card.GetValue()+""+card.GetColor());
             this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
             // this.card = new Image("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");
+            playerCards[j].setVisible(true);
             playerCards[j++].setImage(this.card);
             // Pause();
         }
@@ -177,6 +196,9 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void PlayNewGame() {
+        makeImageViewInvisible();
+        GameOver.setText("");
+        newGamePressed=true;
         this.a_game.NewGame();
         showPlayerHand();
         //updateNewCard();
@@ -187,22 +209,26 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void Hit() throws IOException {
-        this.a_game.Hit();
-        DeckBack();
-        showPlayerHand();
-        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
-        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
-        gameOver();
+        if(newGamePressed) {
+            this.a_game.Hit();
+            DeckBack();
+            showPlayerHand();
+            PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
+            DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
+           // gameOver();
+        }
     }
 
     @FXML
     void Stand() throws IOException {
-        this.a_game.Stand();
-        DeckBack();
-        showPlayerHand();
-        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
-        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
-        gameOver();
+        if(newGamePressed) {
+            this.a_game.Stand();
+            DeckBack();
+            showPlayerHand();
+            PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
+            DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
+            gameOver();
+        }
     }
 
     private void DeckBack() {
@@ -238,6 +264,7 @@ public class Controller implements Initializable, ICardObserver{
     private void gameOver() {
         if (this.a_game.IsGameOver()) {
             GameOver.setText(DisplayGameOver(this.a_game.IsDealerWinner()));
+            newGamePressed=false;
         }
     }
 
