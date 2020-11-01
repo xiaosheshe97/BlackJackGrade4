@@ -82,6 +82,9 @@ public class Controller implements Initializable, ICardObserver{
     @FXML
     private ImageView PlayerCard6;
 
+//    @FXML
+//    private ImageView gettingCard;
+
     @FXML
     private Text GameOver;
 
@@ -99,10 +102,14 @@ public class Controller implements Initializable, ICardObserver{
 
     @Override
     public void updateNewCard(Card card) {
-
         this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
+//        System.out.println("getting");
+//        gettingCard.setImage(this.card);
+//        gettingCard.setVisible(true);
+//        System.out.println(card.GetValue());
 
-        //Pause();
+        //showPlayerHand();
+        Pause();
     }
 
     public void makeImageViewInvisible(){
@@ -135,16 +142,16 @@ public class Controller implements Initializable, ICardObserver{
         int i = 0;
         int j = 0;
         for(Card card : a_game.GetDealerHand()){
-            updateNewCard(card);
-           // this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
+            //updateNewCard(card);
+            this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             // Pause();
             dealerCards[i].setVisible(true);
             dealerCards[i++].setImage(this.card);
             //Pause();
         }
         for(Card card : a_game.GetPlayerHand()){
-            updateNewCard(card);
-            //this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
+            //updateNewCard(card);
+            this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             playerCards[j].setVisible(true);
             playerCards[j++].setImage(this.card);
             // Pause();
