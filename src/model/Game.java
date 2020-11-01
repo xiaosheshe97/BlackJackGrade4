@@ -72,10 +72,4 @@ public class Game {
     return m_player.CalcScore();
   }
 
-//  public Player getPlayer(){
-//    return m_player;
-//  }
-//  public void add(ICardObserver subscriber){
-//    m_dealer.addSubscriber(subscriber);
-//  }
 }
