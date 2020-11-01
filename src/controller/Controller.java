@@ -102,33 +102,8 @@ public class Controller implements Initializable, ICardObserver{
 
     @Override
     public void updateNewCard(Card card) {
-        this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
-//        System.out.println("getting");
-//        gettingCard.setImage(this.card);
-//        gettingCard.setVisible(true);
-//        System.out.println(card.GetValue());
 
-        //showPlayerHand();
-        Pause();
-    }
-
-    public void makeImageViewInvisible(){
-        ImageView[] playerCards = {PlayerCard1,PlayerCard2,PlayerCard3,PlayerCard4,PlayerCard5,PlayerCard6};
-        ImageView[] dealerCards = {DealerCard1,DealerCard2,DealerCard3,DealerCard4,DealerCard5,DealerCard6};
-        //this.GameOver.setText(null);
-      /*  this.PlayerCard1.setVisible(false);
-        this.PlayerCard2.setVisible(false);
-        this.PlayerCard3.setVisible(false);
-        this.PlayerCard4.setVisible(false);
-        this.PlayerCard5.setVisible(false);
-        this.PlayerCard6.setVisible(false);
-        this.DealerCard1.setVisible(false);
-        this.DealerCard2.setVisible(false);
-        this.DealerCard3.setVisible(false);
-        this.DealerCard4.setVisible(false);
-        this.DealerCard5.setVisible(false);
-        this.DealerCard6.setVisible(false);*/
-
+      //  Pause();
     }
 
     public void showPlayerHand() {
@@ -142,7 +117,7 @@ public class Controller implements Initializable, ICardObserver{
         int i = 0;
         int j = 0;
         for(Card card : a_game.GetDealerHand()){
-            //updateNewCard(card);
+
             this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             // Pause();
             dealerCards[i].setVisible(true);
@@ -150,7 +125,7 @@ public class Controller implements Initializable, ICardObserver{
             //Pause();
         }
         for(Card card : a_game.GetPlayerHand()){
-            //updateNewCard(card);
+
             this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             playerCards[j].setVisible(true);
             playerCards[j++].setImage(this.card);
@@ -162,7 +137,7 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void PlayNewGame() {
-       // makeImageViewInvisible();
+       
 
         GameOver.setText("");
         Hit.setDisable(false);
