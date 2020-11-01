@@ -11,7 +11,6 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinnerStrategy m_winRule;
-  //private ArrayList<ICardObserver> subscribers;
 
   public Dealer(RulesAbstractFactory a_rulesAbstractFactory, IVisitor iVisitor) {
   
@@ -64,14 +63,7 @@ public class Dealer extends Player {
   }
 
   public boolean IsDealerWinner(Player a_player) {
-//    if (a_player.CalcScore() > g_maxScore) {
-//      return true;
-//    } else if (CalcScore() > g_maxScore) {
-//      return false;
-//    }
-//    return CalcScore() >= a_player.CalcScore();
-    //int dealerScore = CalcScore();
-    //int playerScore = a_player.CalcScore();
+
     return m_winRule.isDealerWinner(CalcScore(),a_player.CalcScore(),g_maxScore);
   }
 
