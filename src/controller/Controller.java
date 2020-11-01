@@ -1,18 +1,14 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.Card;
-import model.Dealer;
 import model.Game;
 import model.ICardObserver;
-import model.rules.BasicHitAmericanGameDealerWinFactory;
 import model.rules.IVisitor;
 import model.rules.RulesAbstractFactory;
 import model.rules.Soft17InternationalDealerFactory;
@@ -26,12 +22,9 @@ public class Controller implements Initializable, ICardObserver{
     private RulesAbstractFactory factory;
     private IVisitor iVisitor;
     private Game a_game;
-    private boolean newGamePressed;
 
-    private Image[] deckBack = {new Image("model/PNG/blue_back.png"), new Image("model/PNG/gray_back.png"), new Image("model/PNG/green_back.png"),
-            new Image("model/PNG/purple_back.png"), new Image("model/PNG/red_back.png"), new Image("model/PNG/yellow_back.png")};
-
-    private String cardType;
+    private Image[] deckBack = {new Image("view/PNG/blue_back.png"), new Image("view/PNG/gray_back.png"), new Image("view/PNG/green_back.png"),
+            new Image("view/PNG/purple_back.png"), new Image("view/PNG/red_back.png"), new Image("view/PNG/yellow_back.png")};
 
     private Image card;
 
@@ -92,60 +85,31 @@ public class Controller implements Initializable, ICardObserver{
     @FXML
     private Text GameOver;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.factory = new Soft17InternationalDealerFactory();
         this.iVisitor = new PrintVisitor();
         this.a_game = new Game(factory, iVisitor);
         this.a_game.SubscriptionToNewCards(this);
+        Hit.setDisable(true);
+        Stand.setDisable(true);
         DeckBack();
     }
 
-   /* @Override
-    public void updateNewCard(Card card) {
-    }*/
-
-   /* @FXML
-    void PlayNewGame() {
-        this.GameOver.setText(null);
-        this.PlayerCard1.setImage(null);
-        this.PlayerCard2.setImage(null);
-        this.PlayerCard3.setImage(null);
-        this.PlayerCard4.setImage(null);
-        this.PlayerCard5.setImage(null);
-        this.PlayerCard6.setImage(null);
-        this.DealerCard1.setImage(null);
-        this.DealerCard2.setImage(null);
-        this.DealerCard3.setImage(null);
-        this.DealerCard4.setImage(null);
-        this.DealerCard5.setImage(null);
-        this.DealerCard6.setImage(null);
-
-        this.a_game.NewGame();
-        showCard();
-        DeckBack();
-
-        PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
-        DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
-        gameOver();
-    }*/
-
     @Override
     public void updateNewCard(Card card) {
-        // String cardScores[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-        // assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
-        // card.Show(true);
-        // this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
-        //System.out.println(this.cardType);
-       // this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
-         //System.out.println(this.card.getUrl());
-        // System.out.println(card.GetValue()+""+card.GetColor());
+
+        this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
+
         //Pause();
     }
 
     public void makeImageViewInvisible(){
+        ImageView[] playerCards = {PlayerCard1,PlayerCard2,PlayerCard3,PlayerCard4,PlayerCard5,PlayerCard6};
+        ImageView[] dealerCards = {DealerCard1,DealerCard2,DealerCard3,DealerCard4,DealerCard5,DealerCard6};
         //this.GameOver.setText(null);
-        this.PlayerCard1.setVisible(false);
+      /*  this.PlayerCard1.setVisible(false);
         this.PlayerCard2.setVisible(false);
         this.PlayerCard3.setVisible(false);
         this.PlayerCard4.setVisible(false);
@@ -156,36 +120,31 @@ public class Controller implements Initializable, ICardObserver{
         this.DealerCard3.setVisible(false);
         this.DealerCard4.setVisible(false);
         this.DealerCard5.setVisible(false);
-        this.DealerCard6.setVisible(false);
+        this.DealerCard6.setVisible(false);*/
+
     }
 
     public void showPlayerHand() {
-        //a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-        //a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         ImageView[] playerCards = {PlayerCard1,PlayerCard2,PlayerCard3,PlayerCard4,PlayerCard5,PlayerCard6};
-
         ImageView[] dealerCards = {DealerCard1,DealerCard2,DealerCard3,DealerCard4,DealerCard5,DealerCard6};
 
+        for(ImageView iv : playerCards)
+            iv.setVisible(false);
+        for (ImageView iv : dealerCards)
+            iv.setVisible(false);
         int i = 0;
         int j = 0;
         for(Card card : a_game.GetDealerHand()){
-           // updateNewCard(card);
-            System.out.println(card.GetValue()+""+card.GetColor());
-            this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
-
-          /*  this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
-            System.out.println(card.GetValue()+""+card.GetColor());
-            System.out.println("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");*/
+            updateNewCard(card);
+           // this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             // Pause();
             dealerCards[i].setVisible(true);
             dealerCards[i++].setImage(this.card);
             //Pause();
         }
         for(Card card : a_game.GetPlayerHand()){
-            //updateNewCard(card);
-            System.out.println(card.GetValue()+""+card.GetColor());
-            this.card = new Image("model/PNG/" + card.GetValue()+card.GetColor() + ".png");
-            // this.card = new Image("model/PNG/" + card.GetValue()+""+card.GetColor() + ".png");
+            updateNewCard(card);
+            //this.card = new Image("view/PNG/" + card.GetValue()+card.GetColor() + ".png");
             playerCards[j].setVisible(true);
             playerCards[j++].setImage(this.card);
             // Pause();
@@ -196,9 +155,11 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void PlayNewGame() {
-        makeImageViewInvisible();
+       // makeImageViewInvisible();
+
         GameOver.setText("");
-        newGamePressed=true;
+        Hit.setDisable(false);
+        Stand.setDisable(false);
         this.a_game.NewGame();
         showPlayerHand();
         //updateNewCard();
@@ -209,62 +170,31 @@ public class Controller implements Initializable, ICardObserver{
 
     @FXML
     void Hit() throws IOException {
-        if(newGamePressed) {
             this.a_game.Hit();
-            DeckBack();
             showPlayerHand();
             PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
             DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
-           // gameOver();
-        }
     }
 
     @FXML
     void Stand() throws IOException {
-        if(newGamePressed) {
+            Hit.setDisable(true);
             this.a_game.Stand();
             DeckBack();
             showPlayerHand();
             PlayerScore.setText(String.valueOf(a_game.GetPlayerScore()));
             DealerScore.setText(String.valueOf(a_game.GetDealerScore()));
             gameOver();
-        }
     }
 
     private void DeckBack() {
         this.Deck.setImage(deckBack[(int)(Math.random() * 6)]);
     }
 
-   /* private void showCard() {
-        int i = 0;
-        int j = 0;
-        ImageView[] PlayerCards = {PlayerCard1, PlayerCard2, PlayerCard3, PlayerCard4 , PlayerCard5, PlayerCard6};
-        ImageView[] DealerCards = {DealerCard1, DealerCard2, DealerCard3, DealerCard4, DealerCard5, DealerCard6};
-
-        String cardScores[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-        assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
-
-        for (Card card : this.a_game.GetPlayerHand()) {
-            this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
-            this.card = new Image("model/PNG/" + this.cardType + ".png");
-            PlayerCards[i].setImage(this.card);
-            PlayerCards[i].setVisible(true);
-            i++;
-        }
-
-        for (Card card : this.a_game.GetDealerHand()) {
-            this.cardType = cardScores[card.GetValue().ordinal()] + card.GetColor().toString().charAt(0);
-            this.card = new Image("model/PNG/" + this.cardType + ".png");
-            DealerCards[j].setImage(this.card);
-            DealerCards[j].setVisible(true);
-            j++;
-        }
-    }*/
-
     private void gameOver() {
         if (this.a_game.IsGameOver()) {
+            Stand.setDisable(true);
             GameOver.setText(DisplayGameOver(this.a_game.IsDealerWinner()));
-            newGamePressed=false;
         }
     }
 
@@ -280,7 +210,6 @@ public class Controller implements Initializable, ICardObserver{
 
     public void Pause(){
         try{
-            System.out.println("getting ....");
             Thread.sleep(2000);
         }catch (Exception e){}
     }
